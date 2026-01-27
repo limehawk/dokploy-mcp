@@ -21,31 +21,24 @@ export const mountsAllByApplicationId = createTool({
     openWorldHint: true,
   },
   handler: async (input) => {
-    const response = await apiClient.get("/mounts.allNamedByApplicationId", {
-      params: { applicationId: input.applicationId },
-    });
+    const response = await apiClient.get(
+      `/mounts.allNamedByApplicationId?applicationId=${input.applicationId}`
+    );
 
-    if (!response?.data) {
+    const mounts = response?.data ?? [];
+
+    if (!Array.isArray(mounts)) {
       return ResponseFormatter.error(
         "Failed to fetch mounts",
-        "No response data received"
+        "Unexpected response format"
       );
     }
 
-    const mounts = response.data as Array<{
-      mountId: string;
-      type: string;
-      mountPath: string;
-      hostPath?: string;
-      volumeName?: string;
-      content?: string;
-    }>;
-
     // Group by type for easier reading
     const grouped = {
-      file: mounts.filter((m) => m.type === "file"),
-      bind: mounts.filter((m) => m.type === "bind"),
-      volume: mounts.filter((m) => m.type === "volume"),
+      file: mounts.filter((m: { type?: string }) => m.type === "file"),
+      bind: mounts.filter((m: { type?: string }) => m.type === "bind"),
+      volume: mounts.filter((m: { type?: string }) => m.type === "volume"),
     };
 
     return ResponseFormatter.success(

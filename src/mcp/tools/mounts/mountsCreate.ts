@@ -50,16 +50,9 @@ export const mountsCreate = createTool({
   handler: async (input) => {
     const response = await apiClient.post("/mounts.create", input);
 
-    if (!response?.data) {
-      return ResponseFormatter.error(
-        "Failed to create mount",
-        "No response data received"
-      );
-    }
-
     return ResponseFormatter.success(
       `Successfully created ${input.type} mount at ${input.mountPath}`,
-      response.data
+      response?.data ?? { created: true }
     );
   },
 });

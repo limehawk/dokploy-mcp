@@ -39,16 +39,8 @@ export const mountsUpdate = createTool({
       .describe("New file path reference (optional)"),
     serviceType: z
       .enum(["application", "postgres", "mysql", "mariadb", "mongo", "redis", "compose"])
-      .default("application")
       .optional()
       .describe("Service type (optional)"),
-    applicationId: z.string().nullish().describe("Application ID if changing association"),
-    postgresId: z.string().nullish().describe("Postgres ID if changing association"),
-    mysqlId: z.string().nullish().describe("MySQL ID if changing association"),
-    mariadbId: z.string().nullish().describe("MariaDB ID if changing association"),
-    mongoId: z.string().nullish().describe("MongoDB ID if changing association"),
-    redisId: z.string().nullish().describe("Redis ID if changing association"),
-    composeId: z.string().nullish().describe("Compose ID if changing association"),
   }),
   annotations: {
     title: "Update Mount",
@@ -60,16 +52,9 @@ export const mountsUpdate = createTool({
   handler: async (input) => {
     const response = await apiClient.post("/mounts.update", input);
 
-    if (!response?.data) {
-      return ResponseFormatter.error(
-        "Failed to update mount",
-        "No response data received"
-      );
-    }
-
     return ResponseFormatter.success(
       `Successfully updated mount ${input.mountId}`,
-      response.data
+      response?.data ?? { updated: true }
     );
   },
 });

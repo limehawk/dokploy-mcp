@@ -23,16 +23,9 @@ export const mountsRemove = createTool({
   handler: async (input) => {
     const response = await apiClient.post("/mounts.remove", input);
 
-    if (!response?.data) {
-      return ResponseFormatter.error(
-        "Failed to remove mount",
-        "No response data received"
-      );
-    }
-
     return ResponseFormatter.success(
       `Successfully removed mount ${input.mountId}`,
-      response.data
+      response?.data ?? { removed: true }
     );
   },
 });

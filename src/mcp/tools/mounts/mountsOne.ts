@@ -21,14 +21,14 @@ export const mountsOne = createTool({
     openWorldHint: true,
   },
   handler: async (input) => {
-    const response = await apiClient.get("/mounts.one", {
-      params: { mountId: input.mountId },
-    });
+    const response = await apiClient.get(
+      `/mounts.one?mountId=${input.mountId}`
+    );
 
     if (!response?.data) {
       return ResponseFormatter.error(
         "Failed to fetch mount",
-        "No response data received"
+        `Mount with ID "${input.mountId}" not found`
       );
     }
 
