@@ -5,11 +5,14 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationCancelDeployment = createTool({
   name: "application-cancelDeployment",
-  description: "Cancels an ongoing deployment for an application in Dokploy.",
+  description:
+    "Cancels an ongoing deployment for an application in Dokploy. Stops the current build or deployment process.",
   schema: z.object({
     applicationId: z
       .string()
-      .describe("The ID of the application to cancel deployment for."),
+      .describe(
+        "The unique identifier of the application to cancel deployment for."
+      ),
   }),
   annotations: {
     title: "Cancel Application Deployment",

@@ -7,12 +7,15 @@ export const applicationUpdate = createTool({
   name: "application-update",
   description: "Updates an existing application in Dokploy.",
   schema: z.object({
-    applicationId: z.string().describe("The ID of the application to update."),
+    applicationId: z
+      .string()
+      .min(1)
+      .describe("The ID of the application to update. Must be at least 1 character."),
     name: z
       .string()
       .min(1)
       .optional()
-      .describe("The new name of the application."),
+      .describe("The new name of the application. Must be at least 1 character."),
     appName: z
       .string()
       .optional()
@@ -41,7 +44,12 @@ export const applicationUpdate = createTool({
       .string()
       .nullable()
       .optional()
-      .describe("Preview build arguments."),
+      .describe("Preview build arguments in KEY=VALUE format."),
+    previewBuildSecrets: z
+      .string()
+      .nullable()
+      .optional()
+      .describe("Preview build secrets in KEY=VALUE format."),
     previewLabels: z
       .array(z.string())
       .nullable()
@@ -90,7 +98,16 @@ export const applicationUpdate = createTool({
       .nullable()
       .optional()
       .describe("Whether rollback is active."),
-    buildArgs: z.string().nullable().optional().describe("Build arguments."),
+    buildArgs: z
+      .string()
+      .nullable()
+      .optional()
+      .describe("Build arguments in KEY=VALUE format."),
+    buildSecrets: z
+      .string()
+      .nullable()
+      .optional()
+      .describe("Build secrets in KEY=VALUE format."),
     memoryReservation: z
       .string()
       .nullable()
@@ -439,6 +456,33 @@ export const applicationUpdate = createTool({
       .nullable()
       .optional()
       .describe("Bitbucket integration ID."),
+    buildServerId: z
+      .string()
+      .nullable()
+      .optional()
+      .describe("The ID of the server to use for building the application."),
+    buildRegistryId: z
+      .string()
+      .nullable()
+      .optional()
+      .describe("The ID of the registry to use for storing built images."),
+    endpointSpecSwarm: z
+      .object({
+        Mode: z.string().optional(),
+        Ports: z
+          .array(
+            z.object({
+              Protocol: z.string().optional(),
+              TargetPort: z.number().optional(),
+              PublishedPort: z.number().optional(),
+              PublishMode: z.string().optional(),
+            })
+          )
+          .optional(),
+      })
+      .nullable()
+      .optional()
+      .describe("Docker Swarm endpoint specification for port publishing."),
   }),
   annotations: {
     title: "Update Application",

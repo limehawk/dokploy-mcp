@@ -1,0 +1,9 @@
+{
+	"id": "8LS5u9ZVlWhodR7",
+	"json": "{\"id\":\"8LS5u9ZVlWhodR7\",\"url\":\"https://docs.dokploy.com/docs/api/reference-mysql\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-mysql\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-mysql\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:23:51.822Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-mysql",
+	"url": "https://docs.dokploy.com/docs/api/reference-mysql"
+}

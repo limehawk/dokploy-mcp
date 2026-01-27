@@ -1,0 +1,9 @@
+{
+	"id": "W7hfQLY0ycsLM0L",
+	"json": "{\"id\":\"W7hfQLY0ycsLM0L\",\"url\":\"https://docs.dokploy.com/docs/api/reference-redis\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-redis\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-redis\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:24:02.129Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-redis",
+	"url": "https://docs.dokploy.com/docs/api/reference-redis"
+}

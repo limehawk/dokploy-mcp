@@ -1,0 +1,9 @@
+{
+	"id": "o8J2ITIatAqPDeD",
+	"json": "{\"id\":\"o8J2ITIatAqPDeD\",\"url\":\"https://docs.dokploy.com/docs/api/reference-application\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-application\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-application\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:23:12.261Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-application",
+	"url": "https://docs.dokploy.com/docs/api/reference-application"
+}

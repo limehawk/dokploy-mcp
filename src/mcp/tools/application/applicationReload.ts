@@ -5,10 +5,17 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationReload = createTool({
   name: "application-reload",
-  description: "Reloads an application in Dokploy.",
+  description:
+    "Reloads an application in Dokploy. This restarts the application containers without a full redeployment.",
   schema: z.object({
-    applicationId: z.string().describe("The ID of the application to reload."),
-    appName: z.string().describe("The app name of the application to reload."),
+    appName: z
+      .string()
+      .describe(
+        "The app name of the application to reload (the internal Docker service name)."
+      ),
+    applicationId: z
+      .string()
+      .describe("The unique identifier of the application to reload."),
   }),
   annotations: {
     title: "Reload Application",

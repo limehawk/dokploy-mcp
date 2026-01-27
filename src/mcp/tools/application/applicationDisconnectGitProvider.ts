@@ -6,11 +6,13 @@ import { createTool } from "../toolFactory.js";
 export const applicationDisconnectGitProvider = createTool({
   name: "application-disconnectGitProvider",
   description:
-    "Disconnects Git provider configuration from an application in Dokploy.",
+    "Disconnects Git provider configuration from an application in Dokploy. Removes the link between the application and its Git source repository.",
   schema: z.object({
     applicationId: z
       .string()
-      .describe("The ID of the application to disconnect Git provider from."),
+      .describe(
+        "The unique identifier of the application to disconnect Git provider from."
+      ),
   }),
   annotations: {
     title: "Disconnect Application Git Provider",

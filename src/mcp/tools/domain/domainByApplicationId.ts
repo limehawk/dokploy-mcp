@@ -10,8 +10,7 @@ export const domainByApplicationId = createTool({
   schema: z.object({
     applicationId: z
       .string()
-      .min(1)
-      .describe("The ID of the application to retrieve domains for."),
+      .describe("The application ID to retrieve domains for. Required."),
   }),
   annotations: {
     title: "Get Domains by Application ID",

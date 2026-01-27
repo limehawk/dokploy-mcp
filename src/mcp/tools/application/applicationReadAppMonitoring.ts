@@ -5,11 +5,14 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationReadAppMonitoring = createTool({
   name: "application-readAppMonitoring",
-  description: "Reads monitoring data for an application in Dokploy.",
+  description:
+    "Reads monitoring data for an application in Dokploy. Returns resource usage metrics like CPU and memory.",
   schema: z.object({
     appName: z
       .string()
-      .describe("The app name of the application to get monitoring data for."),
+      .describe(
+        "The app name of the application to get monitoring data for (the internal Docker service name)."
+      ),
   }),
   annotations: {
     title: "Read Application Monitoring",

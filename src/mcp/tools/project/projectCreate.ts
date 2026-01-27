@@ -7,16 +7,16 @@ export const projectCreate = createTool({
   name: "project-create",
   description: "Creates a new project in Dokploy.",
   schema: z.object({
-    name: z.string().min(1).describe("The name of the project."),
+    name: z.string().min(1).describe("The name of the project. Required."),
     description: z
       .string()
       .nullable()
       .optional()
-      .describe("An optional description for the project."),
+      .describe("An optional description for the project. Can be null."),
     env: z
       .string()
       .optional()
-      .describe("Optional environment variables for the project."),
+      .describe("Optional environment variables for the project in KEY=value format, one per line."),
   }),
   annotations: {
     title: "Create Project",

@@ -51,7 +51,7 @@ apiClient.interceptors.request.use(
   (error: AxiosError) => {
     logger.error("Request interceptor error", { error: error.message });
     return Promise.reject(error);
-  }
+  },
 );
 
 // Response interceptor - Handle responses and errors with proper logging
@@ -89,7 +89,7 @@ apiClient.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 // Helper Functions
@@ -108,7 +108,7 @@ function handleServerError(response: AxiosResponse): void {
     case 401:
       logger.error(
         "Authentication failed - Invalid or expired API key",
-        errorContext
+        errorContext,
       );
       break;
     case 403:
@@ -133,7 +133,7 @@ function handleServerError(response: AxiosResponse): void {
 
 function handleNetworkError(
   _request: XMLHttpRequest,
-  config: InternalAxiosRequestConfig | undefined
+  config: InternalAxiosRequestConfig | undefined,
 ): void {
   logger.error("Network error - Request failed", {
     method: config?.method?.toUpperCase(),

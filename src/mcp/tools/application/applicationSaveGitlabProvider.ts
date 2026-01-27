@@ -14,28 +14,43 @@ export const applicationSaveGitlabProvider = createTool({
     gitlabBranch: z
       .string()
       .nullable()
-      .describe("The branch to use from the repository."),
+      .describe("The branch to use from the repository (e.g., 'main', 'develop')."),
     gitlabBuildPath: z
       .string()
       .nullable()
-      .describe("The path within the repository to build from."),
-    gitlabOwner: z.string().nullable().describe("The GitLab repository owner."),
+      .describe(
+        "The path within the repository to build from (e.g., '/' for root, '/app' for subdirectory)."
+      ),
+    gitlabOwner: z
+      .string()
+      .nullable()
+      .describe("The GitLab repository owner (username or group name)."),
     gitlabRepository: z
       .string()
       .nullable()
-      .describe("The GitLab repository URL or name."),
-    gitlabId: z.string().nullable().describe("The GitLab integration ID."),
-    gitlabProjectId: z.number().nullable().describe("The GitLab project ID."),
+      .describe("The GitLab repository name."),
+    gitlabId: z
+      .string()
+      .nullable()
+      .describe("The GitLab integration ID from Dokploy's GitLab integrations."),
+    gitlabProjectId: z
+      .number()
+      .nullable()
+      .describe("The GitLab project ID (numeric ID from GitLab)."),
     gitlabPathNamespace: z
       .string()
       .nullable()
-      .describe("The GitLab path namespace."),
+      .describe("The GitLab path namespace (e.g., 'group/subgroup/project')."),
     watchPaths: z
       .array(z.string())
       .nullable()
       .optional()
-      .describe("Paths to watch for changes."),
-    enableSubmodules: z.boolean().describe("Whether to enable git submodules."),
+      .describe(
+        "Paths to watch for changes. Deployments only trigger when changes occur in these paths."
+      ),
+    enableSubmodules: z
+      .boolean()
+      .describe("Whether to enable git submodules during clone."),
   }),
   annotations: {
     title: "Save Application GitLab Provider",

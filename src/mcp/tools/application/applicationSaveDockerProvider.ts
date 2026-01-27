@@ -8,14 +8,16 @@ export const applicationSaveDockerProvider = createTool({
   description:
     "Saves Docker provider configuration for an application in Dokploy.",
   schema: z.object({
-    applicationId: z
-      .string()
-      .describe("The ID of the application to save Docker provider for."),
     dockerImage: z
       .string()
       .nullable()
       .optional()
-      .describe("The Docker image to use for the application."),
+      .describe(
+        "The Docker image to use for the application (e.g., 'nginx:latest', 'myregistry.com/myimage:tag')."
+      ),
+    applicationId: z
+      .string()
+      .describe("The ID of the application to save Docker provider for."),
     username: z
       .string()
       .nullable()
@@ -30,7 +32,9 @@ export const applicationSaveDockerProvider = createTool({
       .string()
       .nullable()
       .optional()
-      .describe("The Docker registry URL."),
+      .describe(
+        "The Docker registry URL (e.g., 'https://registry.hub.docker.com' for Docker Hub)."
+      ),
   }),
   annotations: {
     title: "Save Application Docker Provider",

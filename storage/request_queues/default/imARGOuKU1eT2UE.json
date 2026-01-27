@@ -1,0 +1,9 @@
+{
+	"id": "imARGOuKU1eT2UE",
+	"json": "{\"id\":\"imARGOuKU1eT2UE\",\"url\":\"https://docs.dokploy.com/docs/api/reference-notification\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-notification\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-notification\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:23:52.482Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-notification",
+	"url": "https://docs.dokploy.com/docs/api/reference-notification"
+}

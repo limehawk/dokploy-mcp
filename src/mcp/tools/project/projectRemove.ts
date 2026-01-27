@@ -7,7 +7,7 @@ export const projectRemove = createTool({
   name: "project-remove",
   description: "Removes/deletes an existing project in Dokploy.",
   schema: z.object({
-    projectId: z.string().min(1).describe("The ID of the project to remove."),
+    projectId: z.string().min(1).describe("The unique identifier of the project to remove. This will delete all environments and services within the project. Required."),
   }),
   annotations: {
     title: "Remove Project",

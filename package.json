@@ -24,7 +24,8 @@
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf build",
     "precommit": "bun run lint && bun run format:check && bun run typecheck",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scrape-docs": "bun run scripts/scrape-docs.ts"
   },
   "repository": {
     "type": "git",
@@ -54,9 +55,11 @@
     "@types/node": "^22.15.21",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
+    "crawlee": "^3.15.3",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.1",
+    "playwright": "^1.58.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   }

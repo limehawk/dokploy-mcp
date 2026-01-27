@@ -12,7 +12,7 @@ export const domainCreate = createTool({
       .string()
       .min(1)
       .describe(
-        "The domain host (e.g., example.com or subdomain.example.com)."
+        "The domain host (e.g., example.com or subdomain.example.com). Required."
       ),
     path: z
       .string()
@@ -20,7 +20,7 @@ export const domainCreate = createTool({
       .nullable()
       .optional()
       .describe(
-        "Optional path for the domain (e.g., /api). Used for path-based routing."
+        "URL path for the domain (e.g., /api). Used for path-based routing."
       ),
     port: z
       .number()
@@ -29,65 +29,72 @@ export const domainCreate = createTool({
       .nullable()
       .optional()
       .describe(
-        "The port number for the service (1-65535). If not specified, defaults will be used."
+        "The port number for the service (1-65535). Defaults to service port if not specified."
       ),
-    https: z.boolean().describe("Whether to enable HTTPS for this domain."),
+    https: z
+      .boolean()
+      .optional()
+      .describe("Whether to enable HTTPS for this domain. Defaults to false."),
     applicationId: z
       .string()
       .nullable()
       .optional()
       .describe(
-        "The ID of the application to associate this domain with. Required if domainType is 'application'."
+        "The ID of the application to associate this domain with. Required when domainType is 'application'."
       ),
     certificateType: z
       .enum(["letsencrypt", "none", "custom"])
+      .optional()
       .describe(
-        "The type of SSL certificate: 'letsencrypt' for automatic Let's Encrypt certificates, 'none' for no SSL, or 'custom' for custom certificates."
+        "SSL certificate type: 'letsencrypt' for automatic Let's Encrypt, 'none' for no SSL, 'custom' for custom certificates."
       ),
     customCertResolver: z
       .string()
       .nullable()
       .optional()
       .describe(
-        "Custom certificate resolver name. Required when certificateType is 'custom'."
+        "Custom certificate resolver name in Traefik. Required when certificateType is 'custom'."
       ),
     composeId: z
       .string()
       .nullable()
       .optional()
       .describe(
-        "The ID of the compose service to associate this domain with. Required if domainType is 'compose'."
+        "The ID of the compose stack to associate this domain with. Required when domainType is 'compose'."
       ),
     serviceName: z
       .string()
       .nullable()
       .optional()
       .describe(
-        "The name of the service within the compose stack. Used with composeId."
+        "The service name within the compose stack. Used with composeId to route to a specific service."
       ),
     domainType: z
       .enum(["compose", "application", "preview"])
       .nullable()
       .optional()
       .describe(
-        "The type of domain: 'application' for app domains, 'compose' for compose services, or 'preview' for preview deployments."
+        "Domain target type: 'application' for apps, 'compose' for compose services, 'preview' for preview deployments."
       ),
     previewDeploymentId: z
       .string()
       .nullable()
       .optional()
       .describe(
-        "The ID of the preview deployment. Required if domainType is 'preview'."
+        "The ID of the preview deployment. Required when domainType is 'preview'."
       ),
     internalPath: z
       .string()
       .nullable()
       .optional()
-      .describe("Internal path for routing within the container/service."),
+      .describe(
+        "Internal path for routing within the container/service. Used for request rewriting."
+      ),
     stripPath: z
       .boolean()
+      .optional()
       .describe(
-        "Whether to strip the path prefix when forwarding requests to the backend service."
+        "Whether to strip the path prefix when forwarding requests to the backend. Defaults to false."
       ),
   }),
   annotations: {

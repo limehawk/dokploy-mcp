@@ -10,8 +10,7 @@ export const mountsRemove = createTool({
   schema: z.object({
     mountId: z
       .string()
-      .min(1)
-      .describe("The unique identifier of the mount to remove"),
+      .describe("The unique identifier of the mount to remove. Required."),
   }),
   annotations: {
     title: "Remove Mount",

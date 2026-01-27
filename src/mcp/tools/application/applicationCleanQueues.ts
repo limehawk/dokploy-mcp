@@ -5,11 +5,12 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationCleanQueues = createTool({
   name: "application-cleanQueues",
-  description: "Cleans the queues for an application in Dokploy.",
+  description:
+    "Cleans the deployment queues for an application in Dokploy. Removes pending deployment jobs from the queue.",
   schema: z.object({
     applicationId: z
       .string()
-      .describe("The ID of the application to clean queues for."),
+      .describe("The unique identifier of the application to clean queues for."),
   }),
   annotations: {
     title: "Clean Application Queues",

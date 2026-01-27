@@ -10,12 +10,11 @@ export const domainGenerateDomain = createTool({
   schema: z.object({
     appName: z
       .string()
-      .min(1)
-      .describe("The application name to generate a domain for."),
+      .describe("The application name to generate a domain for. Required."),
     serverId: z
       .string()
       .optional()
-      .describe("Optional server ID to use when generating the domain."),
+      .describe("Server ID to scope the domain generation to. Uses default server if not specified."),
   }),
   annotations: {
     title: "Generate Domain",

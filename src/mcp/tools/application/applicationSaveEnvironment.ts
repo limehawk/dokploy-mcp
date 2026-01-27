@@ -14,12 +14,23 @@ export const applicationSaveEnvironment = createTool({
       .string()
       .nullable()
       .optional()
-      .describe("Environment variables to save for the application."),
+      .describe(
+        "Environment variables to save for the application in KEY=VALUE format, one per line."
+      ),
     buildArgs: z
       .string()
       .nullable()
       .optional()
-      .describe("Build arguments for the application."),
+      .describe(
+        "Build arguments for the application in KEY=VALUE format, one per line."
+      ),
+    buildSecrets: z
+      .string()
+      .nullable()
+      .optional()
+      .describe(
+        "Build secrets for the application in KEY=VALUE format, one per line."
+      ),
   }),
   annotations: {
     title: "Save Application Environment",

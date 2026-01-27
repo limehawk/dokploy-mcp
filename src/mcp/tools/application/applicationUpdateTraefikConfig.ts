@@ -5,14 +5,15 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationUpdateTraefikConfig = createTool({
   name: "application-updateTraefikConfig",
-  description: "Updates Traefik configuration for an application in Dokploy.",
+  description:
+    "Updates Traefik configuration for an application in Dokploy. Replaces the raw Traefik configuration used for routing traffic.",
   schema: z.object({
     applicationId: z
       .string()
-      .describe("The ID of the application to update Traefik config for."),
+      .describe("The unique identifier of the application to update Traefik config for."),
     traefikConfig: z
       .string()
-      .describe("The new Traefik configuration content."),
+      .describe("The new Traefik configuration content in YAML format."),
   }),
   annotations: {
     title: "Update Application Traefik Config",

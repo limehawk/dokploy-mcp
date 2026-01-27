@@ -10,8 +10,7 @@ export const mountsOne = createTool({
   schema: z.object({
     mountId: z
       .string()
-      .min(1)
-      .describe("The unique identifier of the mount to retrieve"),
+      .describe("The unique identifier of the mount to retrieve. Required."),
   }),
   annotations: {
     title: "Get Mount",

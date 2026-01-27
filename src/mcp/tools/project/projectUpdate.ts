@@ -8,25 +8,25 @@ export const projectUpdate = createTool({
   description:
     "Updates an existing project in Dokploy. Only provide the fields you want to update. System fields like createdAt and organizationId are typically not modified.",
   schema: z.object({
-    projectId: z.string().min(1).describe("The ID of the project to update."),
-    name: z.string().min(1).optional().describe("The new name of the project."),
+    projectId: z.string().min(1).describe("The unique identifier of the project to update. Required."),
+    name: z.string().min(1).optional().describe("The new name of the project. Optional."),
     description: z
       .string()
       .nullable()
       .optional()
-      .describe("The new description for the project."),
+      .describe("The new description for the project. Can be null to remove. Optional."),
     createdAt: z
       .string()
       .optional()
-      .describe("The creation date of the project."),
+      .describe("The creation timestamp. Usually not modified. Optional."),
     organizationId: z
       .string()
       .optional()
-      .describe("The organization ID of the project."),
+      .describe("The organization ID of the project. Usually not modified. Optional."),
     env: z
       .string()
       .optional()
-      .describe("Environment variables for the project."),
+      .describe("Environment variables for the project in KEY=value format, one per line. Optional."),
   }),
   annotations: {
     title: "Update Project",

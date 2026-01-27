@@ -5,11 +5,12 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationReadTraefikConfig = createTool({
   name: "application-readTraefikConfig",
-  description: "Reads Traefik configuration for an application in Dokploy.",
+  description:
+    "Reads Traefik configuration for an application in Dokploy. Returns the raw Traefik configuration used for routing traffic to the application.",
   schema: z.object({
     applicationId: z
       .string()
-      .describe("The ID of the application to get Traefik config for."),
+      .describe("The unique identifier of the application to get Traefik config for."),
   }),
   annotations: {
     title: "Read Application Traefik Config",

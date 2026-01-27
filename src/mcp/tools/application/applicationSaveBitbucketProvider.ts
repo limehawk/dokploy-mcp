@@ -8,35 +8,41 @@ export const applicationSaveBitbucketProvider = createTool({
   description:
     "Saves Bitbucket provider configuration for an application in Dokploy.",
   schema: z.object({
-    applicationId: z
-      .string()
-      .describe("The ID of the application to save Bitbucket provider for."),
-    bitbucketRepository: z
-      .string()
-      .nullable()
-      .describe("The Bitbucket repository URL or name."),
-    bitbucketOwner: z
-      .string()
-      .nullable()
-      .describe("The Bitbucket repository owner."),
     bitbucketBranch: z
       .string()
       .nullable()
-      .describe("The branch to use from the repository."),
+      .describe("The branch to use from the repository (e.g., 'main', 'develop')."),
     bitbucketBuildPath: z
       .string()
       .nullable()
-      .describe("The path within the repository to build from."),
+      .describe(
+        "The path within the repository to build from (e.g., '/' for root, '/app' for subdirectory)."
+      ),
+    bitbucketOwner: z
+      .string()
+      .nullable()
+      .describe("The Bitbucket workspace or username that owns the repository."),
+    bitbucketRepository: z
+      .string()
+      .nullable()
+      .describe("The Bitbucket repository slug/name."),
     bitbucketId: z
       .string()
       .nullable()
-      .describe("The Bitbucket integration ID."),
+      .describe("The Bitbucket integration ID from Dokploy's Bitbucket integrations."),
+    applicationId: z
+      .string()
+      .describe("The ID of the application to save Bitbucket provider for."),
     watchPaths: z
       .array(z.string())
       .nullable()
       .optional()
-      .describe("Array of paths to watch for changes."),
-    enableSubmodules: z.boolean().describe("Whether to enable submodules."),
+      .describe(
+        "Array of paths to watch for changes. Deployments only trigger when changes occur in these paths."
+      ),
+    enableSubmodules: z
+      .boolean()
+      .describe("Whether to enable git submodules during clone."),
   }),
   annotations: {
     title: "Save Application Bitbucket Provider",

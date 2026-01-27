@@ -10,12 +10,11 @@ export const domainValidateDomain = createTool({
   schema: z.object({
     domain: z
       .string()
-      .min(1)
-      .describe("The domain name to validate (e.g., example.com)."),
+      .describe("The domain name to validate (e.g., example.com or sub.example.com). Required."),
     serverIp: z
       .string()
       .optional()
-      .describe("Optional server IP to validate DNS resolution against."),
+      .describe("Server IP address to validate DNS resolution against. Checks A record if provided."),
   }),
   annotations: {
     title: "Validate Domain",

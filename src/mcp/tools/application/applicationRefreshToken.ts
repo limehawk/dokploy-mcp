@@ -5,11 +5,12 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationRefreshToken = createTool({
   name: "application-refreshToken",
-  description: "Refreshes the token for an application in Dokploy.",
+  description:
+    "Refreshes the webhook token for an application in Dokploy. Generates a new token used for triggering deployments via webhook.",
   schema: z.object({
     applicationId: z
       .string()
-      .describe("The ID of the application to refresh token for."),
+      .describe("The unique identifier of the application to refresh token for."),
   }),
   annotations: {
     title: "Refresh Application Token",

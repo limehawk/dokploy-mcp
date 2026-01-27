@@ -18,7 +18,7 @@ class Logger {
   private log(
     level: LogLevel,
     message: string,
-    meta?: Record<string, unknown>
+    meta?: Record<string, unknown>,
   ) {
     const entry: LogEntry = {
       level,

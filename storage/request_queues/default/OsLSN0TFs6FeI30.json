@@ -1,0 +1,9 @@
+{
+	"id": "OsLSN0TFs6FeI30",
+	"json": "{\"id\":\"OsLSN0TFs6FeI30\",\"url\":\"https://docs.dokploy.com/docs/api/reference-deployment\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-deployment\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-deployment\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:23:31.833Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-deployment",
+	"url": "https://docs.dokploy.com/docs/api/reference-deployment"
+}

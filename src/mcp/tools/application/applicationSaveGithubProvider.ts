@@ -15,30 +15,44 @@ export const applicationSaveGithubProvider = createTool({
       .string()
       .nullable()
       .optional()
-      .describe("The GitHub repository URL or name."),
+      .describe("The GitHub repository name."),
     branch: z
       .string()
       .nullable()
       .optional()
-      .describe("The branch to use from the repository."),
-    owner: z.string().nullable().describe("The GitHub repository owner."),
+      .describe("The branch to use from the repository (e.g., 'main', 'develop')."),
+    owner: z
+      .string()
+      .nullable()
+      .describe("The GitHub username or organization that owns the repository."),
     buildPath: z
       .string()
       .nullable()
       .optional()
-      .describe("The path within the repository to build from."),
-    githubId: z.string().nullable().describe("The GitHub integration ID."),
+      .describe(
+        "The path within the repository to build from (e.g., '/' for root, '/app' for subdirectory)."
+      ),
+    githubId: z
+      .string()
+      .nullable()
+      .describe("The GitHub integration ID from Dokploy's GitHub integrations."),
     watchPaths: z
       .array(z.string())
       .nullable()
       .optional()
-      .describe("Paths to watch for changes."),
-    enableSubmodules: z.boolean().describe("Whether to enable git submodules."),
+      .describe(
+        "Paths to watch for changes. Deployments only trigger when changes occur in these paths."
+      ),
+    enableSubmodules: z
+      .boolean()
+      .describe("Whether to enable git submodules during clone."),
     triggerType: z
       .enum(["push", "tag"])
       .optional()
       .default("push")
-      .describe("The trigger type for deployments."),
+      .describe(
+        "The trigger type for deployments. 'push' triggers on commits, 'tag' triggers on new tags."
+      ),
   }),
   annotations: {
     title: "Save Application GitHub Provider",

@@ -1,0 +1,9 @@
+{
+	"id": "s7T3ddIbDey4C4j",
+	"json": "{\"id\":\"s7T3ddIbDey4C4j\",\"url\":\"https://docs.dokploy.com/docs/api/reference-previewDeployment\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-previewDeployment\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-previewDeployment\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:23:54.648Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-previewDeployment",
+	"url": "https://docs.dokploy.com/docs/api/reference-previewDeployment"
+}

@@ -5,20 +5,25 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationRedeploy = createTool({
   name: "application-redeploy",
-  description: "Redeploys an application in Dokploy.",
+  description:
+    "Redeploys an application in Dokploy. Rebuilds and redeploys the application from its configured source.",
   schema: z.object({
     applicationId: z
       .string()
       .min(1)
-      .describe("The ID of the application to redeploy."),
+      .describe(
+        "The unique identifier of the application to redeploy. Must be at least 1 character."
+      ),
     title: z
       .string()
       .optional()
-      .describe("Optional title for the redeployment."),
+      .describe("Optional title for the redeployment, shown in deployment history."),
     description: z
       .string()
       .optional()
-      .describe("Optional description for the redeployment."),
+      .describe(
+        "Optional description for the redeployment, shown in deployment history."
+      ),
   }),
   annotations: {
     title: "Redeploy Application",

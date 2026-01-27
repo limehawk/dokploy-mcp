@@ -7,7 +7,9 @@ export const domainDelete = createTool({
   name: "domain-delete",
   description: "Deletes an existing domain configuration in Dokploy by its ID.",
   schema: z.object({
-    domainId: z.string().min(1).describe("The ID of the domain to delete."),
+    domainId: z
+      .string()
+      .describe("The unique identifier of the domain to delete. Required."),
   }),
   annotations: {
     title: "Delete Domain",

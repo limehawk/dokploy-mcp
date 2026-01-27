@@ -5,17 +5,25 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationDeploy = createTool({
   name: "application-deploy",
-  description: "Deploys an application in Dokploy.",
+  description:
+    "Deploys an application in Dokploy. Builds and deploys the application from its configured source.",
   schema: z.object({
     applicationId: z
       .string()
       .min(1)
-      .describe("The ID of the application to deploy."),
-    title: z.string().optional().describe("Optional title for the deployment."),
+      .describe(
+        "The unique identifier of the application to deploy. Must be at least 1 character."
+      ),
+    title: z
+      .string()
+      .optional()
+      .describe("Optional title for the deployment, shown in deployment history."),
     description: z
       .string()
       .optional()
-      .describe("Optional description for the deployment."),
+      .describe(
+        "Optional description for the deployment, shown in deployment history."
+      ),
   }),
   annotations: {
     title: "Deploy Application",

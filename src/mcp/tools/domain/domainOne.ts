@@ -8,7 +8,9 @@ export const domainOne = createTool({
   description:
     "Retrieves a specific domain configuration by its ID in Dokploy.",
   schema: z.object({
-    domainId: z.string().min(1).describe("The ID of the domain to retrieve."),
+    domainId: z
+      .string()
+      .describe("The unique identifier of the domain to retrieve. Required."),
   }),
   annotations: {
     title: "Get Domain by ID",

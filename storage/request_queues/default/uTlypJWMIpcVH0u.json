@@ -1,0 +1,9 @@
+{
+	"id": "uTlypJWMIpcVH0u",
+	"json": "{\"id\":\"uTlypJWMIpcVH0u\",\"url\":\"https://docs.dokploy.com/docs/api/reference-certificates\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-certificates\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-certificates\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:23:22.170Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-certificates",
+	"url": "https://docs.dokploy.com/docs/api/reference-certificates"
+}

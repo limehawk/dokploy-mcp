@@ -5,9 +5,12 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationDelete = createTool({
   name: "application-delete",
-  description: "Deletes an application in Dokploy.",
+  description:
+    "Deletes an application in Dokploy. This is a destructive operation that removes the application and its associated resources.",
   schema: z.object({
-    applicationId: z.string().describe("The ID of the application to delete."),
+    applicationId: z
+      .string()
+      .describe("The unique identifier of the application to delete."),
   }),
   annotations: {
     title: "Delete Application",

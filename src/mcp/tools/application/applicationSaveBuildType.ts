@@ -5,11 +5,12 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationSaveBuildType = createTool({
   name: "application-saveBuildType",
-  description: "Saves build type configuration for an application in Dokploy.",
+  description:
+    "Saves build type configuration for an application in Dokploy. Configures how the application is built.",
   schema: z.object({
     applicationId: z
       .string()
-      .describe("The ID of the application to save build type for."),
+      .describe("The unique identifier of the application to save build type for."),
     buildType: z
       .enum([
         "dockerfile",
@@ -19,25 +20,33 @@ export const applicationSaveBuildType = createTool({
         "static",
         "railpack",
       ])
-      .describe("The build type for the application."),
-    dockerContextPath: z
-      .string()
-      .nullable()
-      .describe("Docker context path (required field)."),
-    dockerBuildStage: z
-      .string()
-      .nullable()
-      .describe("Docker build stage (required field)."),
+      .describe(
+        "The build type for the application: 'dockerfile' for custom Dockerfile, 'nixpacks' for auto-detection, 'heroku_buildpacks'/'paketo_buildpacks' for buildpack builds, 'static' for static sites, 'railpack' for Rails apps."
+      ),
     dockerfile: z
       .string()
       .nullable()
       .optional()
-      .describe("Dockerfile content or path."),
+      .describe(
+        "Path to the Dockerfile relative to build context (e.g., 'Dockerfile', 'docker/Dockerfile.prod')."
+      ),
+    dockerContextPath: z
+      .string()
+      .nullable()
+      .describe(
+        "Docker context path relative to repository root (e.g., '.', './app'). Required field."
+      ),
+    dockerBuildStage: z
+      .string()
+      .nullable()
+      .describe(
+        "Docker build stage to target for multi-stage builds (e.g., 'production', 'builder'). Required field."
+      ),
     herokuVersion: z
       .string()
       .nullable()
       .optional()
-      .describe("Heroku version for heroku_buildpacks build type."),
+      .describe("Heroku buildpack version for heroku_buildpacks build type."),
     railpackVersion: z
       .string()
       .nullable()
@@ -47,12 +56,16 @@ export const applicationSaveBuildType = createTool({
       .string()
       .nullable()
       .optional()
-      .describe("Directory to publish the built application."),
+      .describe(
+        "Directory containing the built files to publish (e.g., 'dist', 'build', 'public')."
+      ),
     isStaticSpa: z
       .boolean()
       .nullable()
       .optional()
-      .describe("Whether the application is a static SPA."),
+      .describe(
+        "Whether the application is a static Single Page Application. Enables SPA-specific routing."
+      ),
   }),
   annotations: {
     title: "Save Application Build Type",

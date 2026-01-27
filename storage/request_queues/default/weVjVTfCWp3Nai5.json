@@ -1,0 +1,9 @@
+{
+	"id": "weVjVTfCWp3Nai5",
+	"json": "{\"id\":\"weVjVTfCWp3Nai5\",\"url\":\"https://docs.dokploy.com/docs/api/reference-admin\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-admin\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-admin\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:23:01.632Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-admin",
+	"url": "https://docs.dokploy.com/docs/api/reference-admin"
+}

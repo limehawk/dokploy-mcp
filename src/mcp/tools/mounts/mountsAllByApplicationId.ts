@@ -29,7 +29,7 @@ export const mountsAllByApplicationId = createTool({
     applicationId: z
       .string()
       .min(1)
-      .describe("The application ID to list mounts for"),
+      .describe("The application ID to list mounts for. Required."),
   }),
   annotations: {
     title: "List Application Mounts",

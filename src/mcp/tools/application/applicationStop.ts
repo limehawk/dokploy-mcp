@@ -5,9 +5,12 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationStop = createTool({
   name: "application-stop",
-  description: "Stops an application in Dokploy.",
+  description:
+    "Stops an application in Dokploy. The application containers will be stopped but the configuration remains intact.",
   schema: z.object({
-    applicationId: z.string().describe("The ID of the application to stop."),
+    applicationId: z
+      .string()
+      .describe("The unique identifier of the application to stop."),
   }),
   annotations: {
     title: "Stop Application",

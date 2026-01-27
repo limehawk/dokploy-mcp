@@ -7,7 +7,7 @@ export const projectOne = createTool({
   name: "project-one",
   description: "Gets a specific project by its ID in Dokploy.",
   schema: z.object({
-    projectId: z.string().describe("The ID of the project to retrieve."),
+    projectId: z.string().min(1).describe("The unique identifier of the project to retrieve. Required."),
   }),
   annotations: {
     title: "Get Project Details",

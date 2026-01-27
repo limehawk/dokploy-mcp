@@ -10,9 +10,8 @@ export const domainCanGenerateTraefikMeDomains = createTool({
   schema: z.object({
     serverId: z
       .string()
-      .min(1)
       .describe(
-        "The server ID to verify Traefik.me domain generation support for."
+        "The server ID to check Traefik.me domain generation capability for. Required."
       ),
   }),
   annotations: {

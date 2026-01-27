@@ -5,9 +5,12 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationStart = createTool({
   name: "application-start",
-  description: "Starts an application in Dokploy.",
+  description:
+    "Starts an application in Dokploy. The application must be previously deployed and currently stopped.",
   schema: z.object({
-    applicationId: z.string().describe("The ID of the application to start."),
+    applicationId: z
+      .string()
+      .describe("The unique identifier of the application to start."),
   }),
   annotations: {
     title: "Start Application",

@@ -5,11 +5,12 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationMarkRunning = createTool({
   name: "application-markRunning",
-  description: "Marks an application as running in Dokploy.",
+  description:
+    "Marks an application as running in Dokploy. Used to manually update the application status to 'running'.",
   schema: z.object({
     applicationId: z
       .string()
-      .describe("The ID of the application to mark as running."),
+      .describe("The unique identifier of the application to mark as running."),
   }),
   annotations: {
     title: "Mark Application as Running",

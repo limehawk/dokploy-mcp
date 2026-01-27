@@ -1,0 +1,9 @@
+{
+	"id": "oaRUSUYOACMA0n7",
+	"json": "{\"id\":\"oaRUSUYOACMA0n7\",\"url\":\"https://docs.dokploy.com/docs/api\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:23:01.614Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api",
+	"url": "https://docs.dokploy.com/docs/api"
+}

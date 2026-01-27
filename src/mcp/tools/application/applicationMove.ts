@@ -5,12 +5,15 @@ import { createTool } from "../toolFactory.js";
 
 export const applicationMove = createTool({
   name: "application-move",
-  description: "Moves an application to a different environment in Dokploy.",
+  description:
+    "Moves an application to a different environment in Dokploy. Changes the application's parent environment.",
   schema: z.object({
-    applicationId: z.string().describe("The ID of the application to move."),
+    applicationId: z
+      .string()
+      .describe("The unique identifier of the application to move."),
     targetEnvironmentId: z
       .string()
-      .describe("The ID of the destination environment."),
+      .describe("The unique identifier of the destination environment."),
   }),
   annotations: {
     title: "Move Application",

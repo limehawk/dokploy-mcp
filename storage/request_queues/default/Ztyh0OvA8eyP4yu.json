@@ -1,0 +1,9 @@
+{
+	"id": "Ztyh0OvA8eyP4yu",
+	"json": "{\"id\":\"Ztyh0OvA8eyP4yu\",\"url\":\"https://docs.dokploy.com/docs/api/reference-bitbucket\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-bitbucket\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-bitbucket\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:23:21.604Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-bitbucket",
+	"url": "https://docs.dokploy.com/docs/api/reference-bitbucket"
+}

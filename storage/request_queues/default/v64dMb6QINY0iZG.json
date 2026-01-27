@@ -1,0 +1,9 @@
+{
+	"id": "v64dMb6QINY0iZG",
+	"json": "{\"id\":\"v64dMb6QINY0iZG\",\"url\":\"https://docs.dokploy.com/docs/api/reference-backup\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-backup\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-backup\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:23:12.135Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-backup",
+	"url": "https://docs.dokploy.com/docs/api/reference-backup"
+}

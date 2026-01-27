@@ -7,11 +7,16 @@ export const applicationCreate = createTool({
   name: "application-create",
   description: "Creates a new application in Dokploy.",
   schema: z.object({
-    name: z.string().min(1).describe("The name of the application."),
+    name: z
+      .string()
+      .min(1)
+      .describe("The name of the application. Must be at least 1 character."),
     appName: z
       .string()
       .optional()
-      .describe("The app name for the application."),
+      .describe(
+        "The app name for the application. Auto-generated if not provided."
+      ),
     description: z
       .string()
       .nullable()
@@ -19,7 +24,6 @@ export const applicationCreate = createTool({
       .describe("An optional description for the application."),
     environmentId: z
       .string()
-      .min(1)
       .describe(
         "The ID of the environment where the application will be created."
       ),
@@ -27,7 +31,9 @@ export const applicationCreate = createTool({
       .string()
       .nullable()
       .optional()
-      .describe("The ID of the server where the application will be deployed."),
+      .describe(
+        "The ID of the server where the application will be deployed. Uses default server if not specified."
+      ),
   }),
   annotations: {
     title: "Create Application",

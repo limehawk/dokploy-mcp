@@ -1,0 +1,9 @@
+{
+	"id": "mZhA2zlsgM9g98m",
+	"json": "{\"id\":\"mZhA2zlsgM9g98m\",\"url\":\"https://docs.dokploy.com/docs/api/reference-security\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-security\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-security\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:24:05.082Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-security",
+	"url": "https://docs.dokploy.com/docs/api/reference-security"
+}

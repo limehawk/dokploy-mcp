@@ -11,7 +11,7 @@ export const domainByComposeId = createTool({
     composeId: z
       .string()
       .min(1)
-      .describe("The ID of the compose service to retrieve domains for."),
+      .describe("The compose stack ID to retrieve domains for. Required."),
   }),
   annotations: {
     title: "Get Domains by Compose ID",

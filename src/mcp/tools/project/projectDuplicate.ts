@@ -4,7 +4,7 @@ import { ResponseFormatter } from "../../../utils/responseFormatter.js";
 import { createTool } from "../toolFactory.js";
 
 const serviceSchema = z.object({
-  id: z.string().describe("The ID of the service."),
+  id: z.string().describe("The unique identifier of the service (applicationId, postgresId, etc.)."),
   type: z
     .enum([
       "application",
@@ -15,7 +15,7 @@ const serviceSchema = z.object({
       "redis",
       "compose",
     ])
-    .describe("The type of the service."),
+    .describe("The type of the service: 'application', 'postgres', 'mariadb', 'mongo', 'mysql', 'redis', or 'compose'."),
 });
 
 export const projectDuplicate = createTool({
@@ -25,16 +25,14 @@ export const projectDuplicate = createTool({
   schema: z.object({
     sourceEnvironmentId: z
       .string()
-      .min(1)
-      .describe("The ID of the source environment to duplicate."),
+      .describe("The unique identifier of the source environment to duplicate. Required."),
     name: z
       .string()
-      .min(1)
-      .describe("The name for the new duplicated environment."),
+      .describe("The name for the new duplicated environment/project. Required."),
     description: z
       .string()
       .optional()
-      .describe("An optional description for the duplicated environment."),
+      .describe("An optional description for the duplicated environment/project."),
     includeServices: z
       .boolean()
       .default(true)
@@ -51,7 +49,7 @@ export const projectDuplicate = createTool({
       .boolean()
       .default(false)
       .describe(
-        "Whether to duplicate the environment within the same project. Defaults to false."
+        "Whether to duplicate the environment within the same project (true) or create a new project (false). Defaults to false."
       ),
   }),
   annotations: {

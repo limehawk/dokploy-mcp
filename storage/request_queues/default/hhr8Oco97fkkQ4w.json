@@ -1,0 +1,9 @@
+{
+	"id": "hhr8Oco97fkkQ4w",
+	"json": "{\"id\":\"hhr8Oco97fkkQ4w\",\"url\":\"https://docs.dokploy.com/docs/api/reference-registry\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-registry\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-registry\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:24:02.952Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-registry",
+	"url": "https://docs.dokploy.com/docs/api/reference-registry"
+}

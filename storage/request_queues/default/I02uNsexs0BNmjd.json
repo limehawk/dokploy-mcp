@@ -1,0 +1,9 @@
+{
+	"id": "I02uNsexs0BNmjd",
+	"json": "{\"id\":\"I02uNsexs0BNmjd\",\"url\":\"https://docs.dokploy.com/docs/api/reference-schedule\",\"loadedUrl\":\"https://docs.dokploy.com/docs/api/reference-schedule\",\"uniqueKey\":\"https://docs.dokploy.com/docs/api/reference-schedule\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2026-01-27T01:24:05.049Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://docs.dokploy.com/docs/api/reference-schedule",
+	"url": "https://docs.dokploy.com/docs/api/reference-schedule"
+}

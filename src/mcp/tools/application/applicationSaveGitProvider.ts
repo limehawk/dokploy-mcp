@@ -6,37 +6,47 @@ import { createTool } from "../toolFactory.js";
 export const applicationSaveGitProvider = createTool({
   name: "application-saveGitProvider",
   description:
-    "Saves Git provider configuration for an application in Dokploy.",
+    "Saves custom Git provider configuration for an application in Dokploy. Use this for self-hosted Git servers or any Git repository accessible via URL.",
   schema: z.object({
-    applicationId: z
-      .string()
-      .describe("The ID of the application to save Git provider for."),
-    customGitUrl: z
-      .string()
-      .nullable()
-      .optional()
-      .describe("The custom Git repository URL."),
     customGitBranch: z
       .string()
       .nullable()
       .optional()
-      .describe("The branch to use from the repository."),
+      .describe("The branch to use from the repository (e.g., 'main', 'develop')."),
+    applicationId: z
+      .string()
+      .describe("The ID of the application to save Git provider for."),
     customGitBuildPath: z
       .string()
       .nullable()
       .optional()
-      .describe("The path within the repository to build from."),
-    customGitSSHKeyId: z
+      .describe(
+        "The path within the repository to build from (e.g., '/' for root, '/app' for subdirectory)."
+      ),
+    customGitUrl: z
       .string()
       .nullable()
       .optional()
-      .describe("The SSH key ID for Git authentication."),
+      .describe(
+        "The custom Git repository URL (HTTPS or SSH format, e.g., 'https://git.example.com/repo.git')."
+      ),
     watchPaths: z
       .array(z.string())
       .nullable()
       .optional()
-      .describe("Array of paths to watch for changes."),
-    enableSubmodules: z.boolean().describe("Whether to enable submodules."),
+      .describe(
+        "Array of paths to watch for changes. Deployments only trigger when changes occur in these paths."
+      ),
+    enableSubmodules: z
+      .boolean()
+      .describe("Whether to enable git submodules during clone."),
+    customGitSSHKeyId: z
+      .string()
+      .nullable()
+      .optional()
+      .describe(
+        "The SSH key ID for Git authentication. Required for SSH URLs, get from Dokploy's SSH key management."
+      ),
   }),
   annotations: {
     title: "Save Application Git Provider",

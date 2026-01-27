@@ -5,11 +5,12 @@ import { ResponseFormatter } from "../../../utils/responseFormatter.js";
 
 export const applicationOne = createTool({
   name: "application-one",
-  description: "Gets a specific application by its ID in Dokploy.",
+  description:
+    "Gets a specific application by its ID in Dokploy. Returns full application details including configuration, status, and deployment information.",
   schema: z.object({
     applicationId: z
       .string()
-      .describe("The ID of the application to retrieve."),
+      .describe("The unique identifier of the application to retrieve."),
   }),
   annotations: {
     title: "Get Application Details",
