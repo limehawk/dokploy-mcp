@@ -3,6 +3,24 @@ import apiClient from "../../../utils/apiClient.js";
 import { ResponseFormatter } from "../../../utils/responseFormatter.js";
 import { createTool } from "../toolFactory.js";
 
+interface Mount {
+  mountId: string;
+  type: "file" | "bind" | "volume";
+  hostPath: string | null;
+  volumeName: string | null;
+  filePath: string | null;
+  content: string | null;
+  serviceType: string;
+  mountPath: string;
+  applicationId: string | null;
+  postgresId: string | null;
+  mariadbId: string | null;
+  mongoId: string | null;
+  mysqlId: string | null;
+  redisId: string | null;
+  composeId: string | null;
+}
+
 export const mountsAllByApplicationId = createTool({
   name: "mounts-allByApplicationId",
   description:
@@ -21,29 +39,42 @@ export const mountsAllByApplicationId = createTool({
     openWorldHint: true,
   },
   handler: async (input) => {
+    // Mounts are embedded in the application.one response
     const response = await apiClient.get(
-      `/mounts.allNamedByApplicationId?applicationId=${input.applicationId}`
+      `/application.one?applicationId=${input.applicationId}`
     );
 
-    const mounts = response?.data ?? [];
-
-    if (!Array.isArray(mounts)) {
+    if (!response?.data) {
       return ResponseFormatter.error(
-        "Failed to fetch mounts",
-        "Unexpected response format"
+        "Failed to fetch application",
+        `Application with ID "${input.applicationId}" not found`
       );
     }
 
+    const mounts: Mount[] = response.data.mounts ?? [];
+
     // Group by type for easier reading
     const grouped = {
-      file: mounts.filter((m: { type?: string }) => m.type === "file"),
-      bind: mounts.filter((m: { type?: string }) => m.type === "bind"),
-      volume: mounts.filter((m: { type?: string }) => m.type === "volume"),
+      file: mounts.filter((m) => m.type === "file"),
+      bind: mounts.filter((m) => m.type === "bind"),
+      volume: mounts.filter((m) => m.type === "volume"),
     };
 
+    // For file mounts, truncate content in summary but include full in data
+    const summary = mounts.map((m) => ({
+      mountId: m.mountId,
+      type: m.type,
+      mountPath: m.mountPath,
+      ...(m.type === "file" && m.content
+        ? { contentPreview: m.content.slice(0, 100) + (m.content.length > 100 ? "..." : "") }
+        : {}),
+      ...(m.type === "volume" ? { volumeName: m.volumeName } : {}),
+      ...(m.type === "bind" ? { hostPath: m.hostPath } : {}),
+    }));
+
     return ResponseFormatter.success(
-      `Found ${mounts.length} mount(s) for application: ${grouped.file.length} file, ${grouped.bind.length} bind, ${grouped.volume.length} volume`,
-      { total: mounts.length, grouped, mounts }
+      `Found ${mounts.length} mount(s): ${grouped.file.length} file, ${grouped.bind.length} bind, ${grouped.volume.length} volume`,
+      { total: mounts.length, grouped, summary, mounts }
     );
   },
 });
