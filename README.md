@@ -397,6 +397,24 @@ Built with **@modelcontextprotocol/sdk**, **TypeScript**, and **Zod** for type-s
 | `src/server.ts` | MCP server setup and tool registration |
 | `src/http-server.ts` | Express server with Streamable HTTP + legacy SSE transport |
 
+## 🔒 Security
+
+### Secret redaction in API responses
+
+The Dokploy API returns several long-lived credentials in plaintext on routine read endpoints (`application.one`, `postgres.one`, SSH key store, S3 backup destinations, git provider configs, etc.). To prevent these from landing in LLM transcripts, prompt caches, and chat logs, this MCP redacts known sensitive fields before returning responses to the client.
+
+Redaction is applied recursively to response bodies. Matched values are replaced with `"[REDACTED]"`. Field-name matching is case-insensitive but exact — ID-suffixed variants like `apiKeyId` and `sshKeyId` are left untouched.
+
+**Redacted fields:** `password`, `databasePassword`, `databaseRootPassword`, `apiKey`, `accessToken`, `appToken`, `clientSecret`, `secret`, `secretAccessKey`, `privateKey`, `sshPrivateKey`, `encPrivateKey`, `privateKeyPass`, `encPrivateKeyPass`, `sshKey`, `githubPrivateKey`, `githubWebhookSecret`, `githubClientSecret`, `gitlabClientSecret`, `gitlabAccessToken`, `bitbucketAppPassword`, `buildSecrets`, `previewBuildSecrets`.
+
+**Opt out** (only for callers that genuinely need the raw values, e.g. local debugging) by setting:
+
+```bash
+DOKPLOY_MCP_INCLUDE_SECRETS=1
+```
+
+Note: the upstream Dokploy API still returns these values; the auth boundary at the API itself is unchanged. This mitigation lives in the MCP layer.
+
 ## 🔧 Development
 
 Clone the project and install dependencies:
