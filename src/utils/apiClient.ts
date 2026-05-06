@@ -23,7 +23,13 @@ const config = getClientConfig();
 const DEFAULT_HEADERS = {
   "Content-Type": "application/json",
   Accept: "application/json",
-  "x-api-key": config.authToken, // Use the same auth mechanism as httpClient
+  "x-api-key": config.authToken,
+  ...(process.env.CF_ACCESS_CLIENT_ID && {
+    "CF-Access-Client-Id": process.env.CF_ACCESS_CLIENT_ID,
+  }),
+  ...(process.env.CF_ACCESS_CLIENT_SECRET && {
+    "CF-Access-Client-Secret": process.env.CF_ACCESS_CLIENT_SECRET,
+  }),
 } as const;
 
 // Create axios instance with configuration from clientConfig
