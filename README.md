@@ -407,11 +407,27 @@ Redaction is applied recursively to response bodies. Matched values are replaced
 
 **Redacted fields:** `password`, `databasePassword`, `databaseRootPassword`, `apiKey`, `accessToken`, `appToken`, `clientSecret`, `secret`, `secretAccessKey`, `privateKey`, `sshPrivateKey`, `encPrivateKey`, `privateKeyPass`, `encPrivateKeyPass`, `sshKey`, `githubPrivateKey`, `githubWebhookSecret`, `githubClientSecret`, `gitlabClientSecret`, `gitlabAccessToken`, `bitbucketAppPassword`, `buildSecrets`, `previewBuildSecrets`.
 
-**Opt out** (only for callers that genuinely need the raw values, e.g. local debugging) by setting:
+Every response that hides secrets includes a `_security.redacted` array listing the field paths that were hidden, so the LLM caller can see what was suppressed.
 
-```bash
-DOKPLOY_MCP_INCLUDE_SECRETS=1
-```
+### Two-key opt-in to expose raw values
+
+Both keys must be turned for the MCP to return plaintext credentials:
+
+| Key | Set by | Purpose |
+|---|---|---|
+| `DOKPLOY_MCP_INCLUDE_SECRETS=1` env var | Operator (human running the server) | Permits the per-call flag to be honored. Without this, raw exposure is impossible regardless of what the LLM does. |
+| `includeSecrets: true` tool param | Caller (LLM/agent) | Per-call request for raw values. |
+
+Behavior matrix:
+
+| Operator env | Caller param | Result |
+|---|---|---|
+| unset | unset (default) | Redacted, with `_security.redacted` annotation |
+| unset | `includeSecrets: true` | **Refused** — tool returns an error explaining the gate and instructing the LLM to stop and not retry |
+| set to `1` | unset (default) | Still redacted (caller didn't ask) |
+| set to `1` | `includeSecrets: true` | Raw values returned with a `_security.warning` banner |
+
+This is intentional: the LLM cannot unilaterally pull plaintext credentials, even if prompt-injected to do so. The operator's env var is the kill switch.
 
 Note: the upstream Dokploy API still returns these values; the auth boundary at the API itself is unchanged. This mitigation lives in the MCP layer.
 

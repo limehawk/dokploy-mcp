@@ -28,6 +28,12 @@ export const schema = {
     .describe(
       "Parameters object. Sent as JSON body for mutations, query string for reads."
     ),
+  includeSecrets: z
+    .boolean()
+    .optional()
+    .describe(
+      "DANGER: request plaintext credentials (passwords, private keys, OAuth secrets, S3 keys) in the response. Will be REFUSED with an explanatory error unless the operator has set DOKPLOY_MCP_INCLUDE_SECRETS=1 on the server. Do not set this flag unless the user has explicitly asked you to fetch raw secret values — redacted field names are usually sufficient to answer questions."
+    ),
 };
 
 export const name = "dokploy-api";
@@ -61,11 +67,18 @@ export const annotations = {
 export async function handler(input: {
   operation: string;
   params?: Record<string, unknown>;
+  includeSecrets?: boolean;
 }) {
   // Ensure description is populated for future registrations
   await ensureDescription();
 
-  const { operation, params } = input;
+  const { operation, params, includeSecrets } = input;
+
+  if (includeSecrets) {
+    logger.warn(
+      `Caller requested raw secrets via includeSecrets=true on ${operation}`
+    );
+  }
   const method = await getMethod(operation);
   const endpoint = `/${operation}`;
 
@@ -79,7 +92,8 @@ export async function handler(input: {
 
     return ResponseFormatter.success(
       `${method} ${operation} succeeded`,
-      response.data
+      response.data,
+      { includeSecrets }
     );
   } catch (error) {
     logger.error(`${method} ${endpoint} failed`, {
