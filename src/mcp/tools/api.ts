@@ -23,7 +23,7 @@ export const schema = {
       'The API operation path, e.g. "application.create", "server.one", "postgres.deploy"'
     ),
   params: z
-    .record(z.any())
+    .record(z.string(), z.any())
     .optional()
     .describe(
       "Parameters object. Sent as JSON body for mutations, query string for reads."
